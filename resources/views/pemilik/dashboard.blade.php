@@ -53,6 +53,102 @@
         </div>
     </div>
 
+    <!-- Prediksi Kebutuhan Bahan Baku (MA-3) -->
+    <div class="mb-8">
+        <div class="bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 p-6">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                        Prediksi Kebutuhan Bahan Baku (MA-{{ $predictions['ma_period'] }})
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-0.5">Proyeksi kebutuhan {{ $predictions['forecast_days'] }} hari ke depan berdasarkan rata-rata konsumsi {{ $predictions['ma_period'] }} hari terakhir.</p>
+                </div>
+                <div class="text-right">
+                    <span class="text-xs text-slate-500 block">Rata-rata Penjualan</span>
+                    <span class="font-bold text-sm text-slate-800">Rp {{ number_format($predictions['avg_daily_sales'], 0, ',', '.') }}/hari</span>
+                </div>
+            </div>
+
+            <!-- Summary Badge -->
+            <div class="flex flex-wrap gap-4 mb-6">
+                <div class="inline-flex items-center gap-2 bg-indigo-50 rounded-2xl px-4 py-2">
+                    <span class="text-2xs text-indigo-600 font-semibold uppercase tracking-wider">Total Prediksi 7 Hari</span>
+                    <span class="font-bold text-sm text-indigo-700">{{ number_format($predictions['total_predicted'], 2) }}</span>
+                </div>
+            </div>
+
+            <!-- Tabel Prediksi -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-100">
+                            <th class="text-left font-bold text-2xs text-slate-400 uppercase tracking-wider pb-3">Bahan Baku</th>
+                            <th class="text-right font-bold text-2xs text-slate-400 uppercase tracking-wider pb-3">Stok Saat Ini</th>
+                            <th class="text-right font-bold text-2xs text-slate-400 uppercase tracking-wider pb-3">Rata-rata Harian</th>
+                            <th class="text-right font-bold text-2xs text-slate-400 uppercase tracking-wider pb-3">Prediksi 7 Hari</th>
+                            <th class="text-right font-bold text-2xs text-slate-400 uppercase tracking-wider pb-3">Stok Setelah 7 Hari</th>
+                            <th class="text-right font-bold text-2xs text-slate-400 uppercase tracking-wider pb-3">Estimasi Habis</th>
+                            <th class="text-center font-bold text-2xs text-slate-400 uppercase tracking-wider pb-3">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-50">
+                        @foreach($predictions['items'] as $pred)
+                            @php
+                                $isCritical = $pred['needs_restock'];
+                                $isWarning = $pred['days_until_empty'] < 14 && !$isCritical;
+                            @endphp
+                            <tr class="hover:bg-slate-50/50 transition {{ $isCritical ? 'bg-red-50/30' : ($isWarning ? 'bg-amber-50/30' : '') }}">
+                                <td class="py-3 pr-4">
+                                    <span class="font-semibold text-slate-800">{{ $pred['material']->name }}</span>
+                                    <span class="text-3xs text-slate-400 block">{{ $pred['material']->code }}</span>
+                                </td>
+                                <td class="py-3 px-2 text-right font-medium text-slate-700">{{ floatval($pred['material']->current_stock) }} {{ $pred['material']->unit }}</td>
+                                <td class="py-3 px-2 text-right text-slate-600">{{ $pred['avg_daily_usage'] }} {{ $pred['material']->unit }}</td>
+                                <td class="py-3 px-2 text-right font-medium text-slate-700">{{ $pred['predicted_7_days'] }} {{ $pred['material']->unit }}</td>
+                                <td class="py-3 px-2 text-right font-semibold {{ $isCritical ? 'text-red-600' : ($isWarning ? 'text-amber-600' : 'text-emerald-600') }}">
+                                    {{ $pred['stock_after_7days'] }} {{ $pred['material']->unit }}
+                                </td>
+                                <td class="py-3 px-2 text-right text-slate-600">
+                                    @if($pred['days_until_empty'] > 30)
+                                        <span class="text-emerald-600">>30 hari</span>
+                                    @else
+                                        {{ $pred['days_until_empty'] }} hari
+                                    @endif
+                                </td>
+                                <td class="py-3 pl-2 text-center">
+                                    @if($isCritical)
+                                        <span class="inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-2xs font-bold text-red-700">Kritis</span>
+                                    @elseif($isWarning)
+                                        <span class="inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-2xs font-bold text-amber-700">Perhatian</span>
+                                    @else
+                                        <span class="inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-2xs font-bold text-emerald-700">Aman</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            @if(count($predictions['items']) === 0)
+                <div class="py-8 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                    <p class="text-sm font-semibold text-slate-600 mt-3">Tidak ada data bahan baku untuk diprediksi.</p>
+                </div>
+            @endif
+
+            <!-- Catatan Kaki -->
+            <div class="mt-4 pt-4 border-t border-slate-100">
+                <p class="text-3xs text-slate-400">
+                    <span class="font-semibold">Metode:</span> Moving Average (MA) dengan periode n={{ $predictions['ma_period'] }}.
+                    Prediksi = rata-rata konsumsi {{ $predictions['ma_period'] }} hari terakhir × {{ $predictions['forecast_days'] }} hari ke depan.
+                    Data diambil dari riwayat konsumsi bahan baku (stok keluar) {{ $predictions['ma_period'] }} hari terakhir.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Low Stock Alerts Section -->
         <div class="bg-white rounded-3xl border border-slate-100 shadow-xl shadow-slate-100/50 p-6">

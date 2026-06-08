@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 
 class PemilikController extends Controller
 {
@@ -60,7 +61,90 @@ class PemilikController extends Controller
             ->where('status', '!=', CustomerOrder::STATUS_CANCELLED)
             ->count();
 
-        return view('pemilik.dashboard', compact('materials', 'lowStockMaterials', 'activePOs', 'todayRevenue', 'todayOrdersCount'));
+        // ─── PREDIKSI MOVING AVERAGE (MA-3) ────────────────────────
+        $predictions = $this->predictRawMaterialNeeds();
+
+        return view('pemilik.dashboard', compact('materials', 'lowStockMaterials', 'activePOs', 'todayRevenue', 'todayOrdersCount', 'predictions'));
+    }
+
+    /**
+     * Prediksi kebutuhan bahan baku 7 hari ke depan menggunakan MA(3).
+     *
+     * Metode Moving Average dengan periode n=3:
+     * - Mengambil rata-rata konsumsi harian 3 hari terakhir dari StockMutation (type = 'out')
+     * - Menggunakan nilai MA tersebut sebagai prediksi konsumsi untuk setiap hari ke depan
+     * - Dihitung per bahan baku
+     */
+    private function predictRawMaterialNeeds(): array
+    {
+        // 1. Ambil data penjualan 3 hari terakhir
+        $salesData = DailySalesSummary::orderBy('summary_date', 'desc')->take(3)->get();
+        $avgDailySales = $salesData->avg('net_sales') ?: 0;
+
+        // 2. Ambil data konsumsi bahan baku (stock out) 3 hari terakhir per material
+        $threeDaysAgo = now()->subDays(3)->startOfDay();
+        $consumptionData = StockMutation::where('type', StockMutation::TYPE_OUT)
+            ->where('created_at', '>=', $threeDaysAgo)
+            ->select('raw_material_id', DB::raw('SUM(quantity) as total_qty'), DB::raw('COUNT(DISTINCT DATE(created_at)) as active_days')) // fix: use DATE(created_at)
+            ->groupBy('raw_material_id')
+            ->get()
+            ->keyBy('raw_material_id');
+
+        // 3. Hitung MA(3) per material & proyeksi 7 hari
+        $rawMaterials = RawMaterial::all();
+        $predictions = [];
+        $grandTotalPredicted = 0;
+
+        foreach ($rawMaterials as $mat) {
+            $consumption = $consumptionData->get($mat->id);
+
+            if ($consumption && $consumption->total_qty > 0 && $consumption->active_days > 0) {
+                // Rata-rata konsumsi harian (MA(3))
+                $avgDailyConsumption = $consumption->total_qty / $consumption->active_days;
+            } else {
+                // Fallback: jika belum ada data, gunakan current_stock sebagai acuan
+                // atau estimasi 10% dari current_stock per hari jika >= minimum
+                $avgDailyConsumption = $mat->current_stock > 0
+                    ? max(0.1, $mat->current_stock * 0.05) // 5% dari stok saat ini
+                    : ($mat->minimum_stock * 0.1); // 10% dari minimum stock
+            }
+
+            // Proyeksi kebutuhan 7 hari ke depan
+            $predictedQty = $avgDailyConsumption * 7;
+            $grandTotalPredicted += $predictedQty;
+
+            // Stock setelah 7 hari tanpa restock
+            $stockAfter7Days = $mat->current_stock - $predictedQty;
+            $needsRestock = $stockAfter7Days < $mat->minimum_stock;
+
+            // Hitung berapa hari lagi stok habis (jika konsumsi > 0)
+            $daysUntilEmpty = $avgDailyConsumption > 0
+                ? ($mat->current_stock / $avgDailyConsumption)
+                : 365;
+
+            $predictions[] = [
+                'material'          => $mat,
+                'avg_daily_usage'   => round($avgDailyConsumption, 2),
+                'predicted_7_days'  => round($predictedQty, 2),
+                'stock_after_7days' => round($stockAfter7Days, 2),
+                'needs_restock'     => $needsRestock,
+                'days_until_empty'  => round($daysUntilEmpty, 1),
+            ];
+        }
+
+        // Urutkan: yang paling kritis (stok terendah setelah 7 hari) di atas
+        usort($predictions, function ($a, $b) {
+            return $a['stock_after_7days'] <=> $b['stock_after_7days'];
+        });
+
+        return [
+            'items'          => $predictions,
+            'avg_daily_sales'=> round($avgDailySales, 2),
+            'total_predicted'=> round($grandTotalPredicted, 2),
+            'sales_data'     => $salesData,
+            'ma_period'      => 3,
+            'forecast_days'  => 7,
+        ];
     }
 
     // --- MANAJEMEN BAHAN BAKU ---
