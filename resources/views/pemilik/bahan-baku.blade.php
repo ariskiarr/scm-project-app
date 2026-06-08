@@ -9,7 +9,7 @@
             <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Manajemen Bahan Baku</h1>
             <p class="text-slate-500 text-sm mt-1">Kelola ketersediaan bahan baku, harga beli, dan batas minimum stok.</p>
         </div>
-        <button @click="openAddModal = true" class="rounded-xl bg-gradient-to-r from-amber-500 to-red-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
+        <button @click="openAddModal = true" class="rounded-xl  bg-amber-500 hover:bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
             Tambah Bahan Baku
         </button>
@@ -93,37 +93,37 @@
                 @csrf
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Kode Bahan Baku</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Kode Bahan Baku</label>
                         <input type="text" name="code" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="BB-BEEF">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Nama Bahan</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Nama Bahan</label>
                         <input type="text" name="name" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Daging Sapi Kebab">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-3 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Satuan Beli</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Satuan Beli</label>
                         <input type="text" name="unit" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="kg">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Stok Awal</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Stok Awal</label>
                         <input type="number" step="0.01" name="current_stock" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="10">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Batas Min</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Batas Min</label>
                         <input type="number" step="0.01" name="minimum_stock" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="2">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Estimasi Harga Beli Satuan (Rp)</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Estimasi Harga Beli Satuan (Rp)</label>
                     <input type="number" name="price_per_unit" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="95000">
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Deskripsi (Opsional)</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Deskripsi (Opsional)</label>
                     <textarea name="description" rows="3" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Daging sapi berkualitas impor..."></textarea>
                 </div>
 
@@ -148,38 +148,38 @@
                 @method('PUT')
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Kode Bahan Baku</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Kode Bahan Baku</label>
                         <input type="text" name="code" :value="activeMaterial.code" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Nama Bahan</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Nama Bahan</label>
                         <input type="text" name="name" :value="activeMaterial.name" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Satuan Beli</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Satuan Beli</label>
                         <input type="text" name="unit" :value="activeMaterial.unit" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Batas Min</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Batas Min</label>
                         <input type="number" step="0.01" name="minimum_stock" :value="activeMaterial.minimum_stock" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Harga Beli Satuan (Rp)</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Harga Beli Satuan (Rp)</label>
                     <input type="number" name="price_per_unit" :value="activeMaterial.price_per_unit" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500">
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Deskripsi</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Deskripsi</label>
                     <textarea name="description" rows="3" :value="activeMaterial.description" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500"></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Status Aktif</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Status Aktif</label>
                     <select name="is_active" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500">
                         <option value="1" :selected="activeMaterial.is_active == 1">Aktif</option>
                         <option value="0" :selected="activeMaterial.is_active == 0">Nonaktif</option>

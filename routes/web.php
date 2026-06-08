@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     // 1. Pemilik Usaha Routes
     Route::prefix('pemilik')->middleware(['role:pemilik'])->group(function () {
         Route::get('/dashboard', [PemilikController::class, 'dashboard'])->name('pemilik.dashboard');
-        
+
         // Bahan Baku (Inventory)
         Route::get('/bahan-baku', [PemilikController::class, 'bahanBaku'])->name('pemilik.bahan-baku');
         Route::post('/bahan-baku', [PemilikController::class, 'storeBahanBaku'])->name('pemilik.bahan-baku.store');
@@ -49,6 +49,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/purchase-orders/{id}/cancel', [PemilikController::class, 'cancelPO'])->name('pemilik.purchase-orders.cancel');
         Route::post('/purchase-orders/{id}/receive', [PemilikController::class, 'receivePO'])->name('pemilik.purchase-orders.receive');
 
+        // Produk (Menu)
+        Route::get('/produk', [PemilikController::class, 'produk'])->name('pemilik.produk');
+        Route::post('/produk', [PemilikController::class, 'storeProduk'])->name('pemilik.produk.store');
+        Route::put('/produk/{id}', [PemilikController::class, 'updateProduk'])->name('pemilik.produk.update');
+        Route::delete('/produk/{id}', [PemilikController::class, 'destroyProduk'])->name('pemilik.produk.destroy');
+
         // Laporan Penjualan
         Route::get('/laporan', [PemilikController::class, 'laporan'])->name('pemilik.laporan');
 
@@ -61,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
     // 2. Kasir Routes
     Route::prefix('kasir')->middleware(['role:kasir'])->group(function () {
         Route::get('/dashboard', [KasirController::class, 'dashboard'])->name('kasir.dashboard');
-        
+
         // POS Cashier Input
         Route::get('/transaksi/create', [KasirController::class, 'transaksiCreate'])->name('kasir.transaksi.create');
         Route::post('/transaksi', [KasirController::class, 'transaksiStore'])->name('kasir.transaksi.store');
@@ -95,7 +101,7 @@ Route::middleware(['auth'])->group(function () {
     // 5. Pelanggan Routes
     Route::prefix('pelanggan')->middleware(['role:pelanggan'])->group(function () {
         Route::get('/dashboard', [PelangganController::class, 'dashboard'])->name('pelanggan.dashboard');
-        
+
         // Checkout & Pemesanan
         Route::get('/checkout', [PelangganController::class, 'checkout'])->name('pelanggan.checkout');
         Route::post('/order', [PelangganController::class, 'storeOrder'])->name('pelanggan.order');

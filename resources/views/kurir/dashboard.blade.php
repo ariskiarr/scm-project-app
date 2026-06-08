@@ -95,7 +95,7 @@
                 @csrf
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Status Kirim</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Status Kirim</label>
                     <select name="status" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-xs focus:border-amber-500 focus:outline-none">
                         <option value="picked_up">Paket Diambil Dari Dapur (Picked Up)</option>
                         <option value="in_transit">Sedang Di Jalan (In Transit)</option>
@@ -105,12 +105,12 @@
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Lokasi Terkini</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Lokasi Terkini</label>
                     <input type="text" name="location" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-xs focus:border-amber-500 focus:outline-none" placeholder="Contoh: Jl. Sudirman / Dekat Gerbang Perumahan">
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Keterangan Tambahan</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Keterangan Tambahan</label>
                     <textarea name="description" required rows="2" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-xs focus:border-amber-500 focus:outline-none" placeholder="Contoh: Paket diterima langsung oleh pelanggan..."></textarea>
                 </div>
 

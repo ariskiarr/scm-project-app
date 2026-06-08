@@ -132,7 +132,7 @@
                 <input type="hidden" name="status" value="ready_to_ship">
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Pilih Kurir Pengirim</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Pilih Kurir Pengirim</label>
                     <select name="kurir_id" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                         <option value="">-- Pilih Kurir --</option>
                         @foreach($couriers as $cour)

@@ -9,7 +9,7 @@
             <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Manajemen Akun Pengguna</h1>
             <p class="text-slate-500 text-sm mt-1">Kelola hak akses pengguna sistem (Pemilik, Kasir, Kurir, Pemasok).</p>
         </div>
-        <button @click="openAddModal = true" class="rounded-xl bg-gradient-to-r from-amber-500 to-red-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
+        <button @click="openAddModal = true" class="rounded-xl  bg-amber-500 hover:bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg> Tambah Pengguna Baru
         </button>
     </div>
@@ -89,22 +89,22 @@
                 @csrf
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Nama Lengkap</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Nama Lengkap</label>
                         <input type="text" name="name" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="Ahmad Budi">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Email Login</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Email Login</label>
                         <input type="email" name="email" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="budi@email.com">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">No HP / WhatsApp</label>
+                        <label class="block text-3xs font-semibold text-slate-500">No HP / WhatsApp</label>
                         <input type="text" name="phone" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="0812xxxx">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Role Akses</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Role Akses</label>
                         <select name="role" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                             <option value="pemilik">Pemilik Usaha</option>
                             <option value="kasir">Kasir</option>
@@ -115,12 +115,12 @@
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Alamat Lengkap</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Alamat Lengkap</label>
                     <textarea name="address" rows="2" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="Jl. Raya No. 12..."></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Kata Sandi Default</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Kata Sandi Default</label>
                     <input type="password" name="password" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="Masukkan password">
                 </div>
 
@@ -145,22 +145,22 @@
                 @method('PUT')
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Nama Lengkap</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Nama Lengkap</label>
                         <input type="text" name="name" :value="activeUser.name" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Email Login</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Email Login</label>
                         <input type="email" name="email" :value="activeUser.email" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">No HP / WhatsApp</label>
+                        <label class="block text-3xs font-semibold text-slate-500">No HP / WhatsApp</label>
                         <input type="text" name="phone" :value="activeUser.phone" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Role Akses</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Role Akses</label>
                         <select name="role" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                             <option value="pemilik" :selected="activeUser.role === 'pemilik'">Pemilik Usaha</option>
                             <option value="kasir" :selected="activeUser.role === 'kasir'">Kasir</option>
@@ -171,18 +171,18 @@
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Alamat Lengkap</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Alamat Lengkap</label>
                     <textarea name="address" rows="2" required :value="activeUser.address" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none"></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Ganti Kata Sandi (Kosongkan jika tidak diubah)</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Ganti Kata Sandi (Kosongkan jika tidak diubah)</label>
                     <input type="password" name="password" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="Masukkan password baru">
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Status Akun</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Status Akun</label>
                         <select name="is_active" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                             <option value="1" :selected="activeUser.is_active == 1">Aktif</option>
                             <option value="0" :selected="activeUser.is_active == 0">Nonaktif</option>

@@ -13,11 +13,11 @@
     <div class="bg-white border border-slate-100 rounded-3xl p-6 shadow-xl shadow-slate-100/50 mb-8">
         <form action="{{ route('pemilik.laporan') }}" method="GET" class="flex flex-col sm:flex-row gap-4 items-end">
             <div class="flex-1">
-                <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Tanggal Mulai</label>
+                <label class="block text-3xs font-semibold text-slate-500">Tanggal Mulai</label>
                 <input type="date" name="start_date" value="{{ $startDate->toDateString() }}" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
             </div>
             <div class="flex-1">
-                <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Tanggal Selesai</label>
+                <label class="block text-3xs font-semibold text-slate-500">Tanggal Selesai</label>
                 <input type="date" name="end_date" value="{{ $endDate->toDateString() }}" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
             </div>
             <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold text-sm px-6 py-2.5 rounded-xl shadow-md transition-all duration-150">

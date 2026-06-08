@@ -119,7 +119,7 @@
                 @csrf
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Status Log Pengiriman</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Status Log Pengiriman</label>
                     <select name="status" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                         <option value="preparing">Sedang Disiapkan / Packing</option>
                         <option value="shipped">Sudah Diserahkan ke Ekspedisi (Shipped)</option>
@@ -128,12 +128,12 @@
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Nomor Resi / Kurir (Opsional)</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Nomor Resi / Kurir (Opsional)</label>
                     <input type="text" name="tracking_number" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="Contoh: JNE-9842014022">
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Keterangan / Lokasi Terkini</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Keterangan / Lokasi Terkini</label>
                     <textarea name="description" required rows="2" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="Contoh: Paket telah dikirim lewat kurir internal..."></textarea>
                 </div>
 

@@ -97,28 +97,28 @@
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Harga Jual Anda (Rp)</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Harga Jual Anda (Rp)</label>
                         <input type="number" name="price_per_unit" :value="activeMaterial.price_per_unit" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Min. Order Qty</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Min. Order Qty</label>
                         <input type="number" step="0.01" name="minimum_order_qty" :value="activeMaterial.minimum_order_qty" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Stok Tersedia Anda</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Stok Tersedia Anda</label>
                         <input type="number" step="0.01" name="available_stock" :value="activeMaterial.available_stock" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Lead Time (Hari)</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Lead Time (Hari)</label>
                         <input type="number" name="lead_time_days" :value="activeMaterial.lead_time_days" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Status Pasokan</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Status Pasokan</label>
                     <select name="is_active" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:outline-none">
                         <option value="1" :selected="activeMaterial.is_active == 1">Aktif Pasok</option>
                         <option value="0" :selected="activeMaterial.is_active == 0">Nonaktif / Tutup Pasokan</option>

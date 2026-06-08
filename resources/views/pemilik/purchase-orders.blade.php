@@ -9,7 +9,7 @@
             <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Purchase Orders</h1>
             <p class="text-slate-500 text-sm mt-1">Buat pesanan bahan baku ke pemasok langsung dan pantau status barang.</p>
         </div>
-        <button @click="openCreateSelectModal = true" class="rounded-xl bg-gradient-to-r from-amber-500 to-red-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
+        <button @click="openCreateSelectModal = true" class="rounded-xl  bg-amber-500 hover:bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
             Buat PO Baru
         </button>
@@ -120,7 +120,7 @@
 
             <form action="{{ route('pemilik.purchase-orders.create') }}" method="GET" class="p-6 space-y-4">
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Silakan Pilih Pemasok</label>
+                    <label class="block text-3xs font-semibold text-slate-500">Silakan Pilih Pemasok</label>
                     <select name="supplier_id" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                         <option value="">-- Pilih Pemasok --</option>
                         @foreach($suppliers as $sup)

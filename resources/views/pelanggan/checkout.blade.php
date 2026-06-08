@@ -43,14 +43,14 @@
 
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Alamat Lengkap Pengiriman</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Alamat Lengkap Pengiriman</label>
                         <textarea name="shipping_address" required rows="3"
                                   class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none"
                                   placeholder="Masukkan alamat pengiriman lengkap...">{{ auth()->user()->address }}</textarea>
                     </div>
 
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Catatan Tambahan untuk Kasir/Dapur (Opsional)</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Catatan Tambahan untuk Kasir/Dapur (Opsional)</label>
                         <textarea name="notes" rows="2"
                                   class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none"
                                   placeholder="Contoh: Kebab extra pedas, atau jangan pakai mayones..."></textarea>
@@ -66,7 +66,7 @@
 
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Pilih Cara Pembayaran</label>
+                        <label class="block text-3xs font-semibold text-slate-500">Pilih Cara Pembayaran</label>
                         <select name="payment_method" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                             <option value="cod">Bayar di Tempat (COD)</option>
                             <option value="qris">QRIS (Otomatis)</option>

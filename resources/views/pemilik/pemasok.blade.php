@@ -113,80 +113,80 @@
                 <button @click="openAddModal = false" class="text-slate-400 hover:text-slate-600 text-lg">&times;</button>
             </div>
 
-            <form action="{{ route('pemilik.pemasok.store') }}" method="POST" class="p-6 space-y-4" x-data="{ create_user: '1' }">
+            <form action="{{ route('pemilik.pemasok.store') }}" method="POST" class="p-5 space-y-3" x-data="{ create_user: '1' }">
                 @csrf
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Nama Perusahaan / Toko</label>
-                        <input type="text" name="company_name" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="CV. Daging Segar Mandiri">
+                        <label class="block text-3xs font-semibold text-slate-500">Nama Perusahaan / Toko</label>
+                        <input type="text" name="company_name" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="CV. Daging Segar Mandiri">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Contact Person (PJ)</label>
-                        <input type="text" name="contact_person" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Bp. Hermawan">
+                        <label class="block text-3xs font-semibold text-slate-500">Contact Person (PJ)</label>
+                        <input type="text" name="contact_person" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Bp. Hermawan">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">No HP / WhatsApp</label>
-                        <input type="text" name="phone" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="0812345678">
+                        <label class="block text-3xs font-semibold text-slate-500">No HP / WhatsApp</label>
+                        <input type="text" name="phone" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="0812345678">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Email Kontak (Opsional)</label>
-                        <input type="email" name="email" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="kontak@dagingsegar.com">
+                        <label class="block text-3xs font-semibold text-slate-500">Email Kontak (Opsional)</label>
+                        <input type="email" name="email" class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="kontak@dagingsegar.com">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Alamat Pemasok</label>
-                    <textarea name="address" rows="2" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Kawasan Industri Pulogadung..."></textarea>
+                    <label class="block text-3xs font-semibold text-slate-500">Alamat Pemasok</label>
+                    <textarea name="address" rows="2" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Kawasan Industri Pulogadung..."></textarea>
                 </div>
 
-                <div class="grid grid-cols-3 gap-2 border-t border-slate-50 pt-3">
+                <div class="grid grid-cols-3 gap-2 pt-2">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Nama Bank</label>
-                        <input type="text" name="bank_name" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="BCA">
+                        <label class="block text-3xs font-semibold text-slate-500">Nama Bank</label>
+                        <input type="text" name="bank_name" class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="BCA">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">No Rekening</label>
-                        <input type="text" name="bank_account_number" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="84201xxxx">
+                        <label class="block text-3xs font-semibold text-slate-500">No Rekening</label>
+                        <input type="text" name="bank_account_number" class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="84201xxxx">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Pemilik Rekening</label>
-                        <input type="text" name="bank_account_name" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="CV Daging Segar">
+                        <label class="block text-3xs font-semibold text-slate-500">Pemilik Rekening</label>
+                        <input type="text" name="bank_account_name" class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="CV Daging Segar">
                     </div>
                 </div>
 
                 <!-- Account Creation Section -->
-                <div class="bg-amber-50/50 p-4 border border-amber-100 rounded-2xl mt-4">
-                    <label class="block text-xs font-bold text-slate-700">Akun Pengguna untuk Pemasok</label>
-                    <div class="mt-2 flex gap-4 text-xs">
+                <div class="bg-amber-50/50 p-3 border border-amber-100 rounded-2xl">
+                    <label class="block text-3xs font-semibold text-slate-700">Akun Pengguna untuk Pemasok</label>
+                    <div class="mt-1.5 flex gap-3 text-3xs">
                         <label class="inline-flex items-center">
                             <input type="radio" name="create_user" value="1" x-model="create_user" class="text-amber-600 focus:ring-amber-500">
-                            <span class="ml-1">Buat Akun Login Baru</span>
+                            <span class="ml-1">Buat Akun Baru</span>
                         </label>
                         <label class="inline-flex items-center">
                             <input type="radio" name="create_user" value="0" x-model="create_user" class="text-amber-600 focus:ring-amber-500">
-                            <span class="ml-1">Hubungkan Akun Pemasok Terdaftar</span>
+                            <span class="ml-1">Hubungkan Akun Terdaftar</span>
                         </label>
                     </div>
 
                     <!-- Div Buat Akun Baru -->
-                    <div class="mt-3 grid grid-cols-2 gap-3" x-show="create_user == '1'">
+                    <div class="mt-2 grid grid-cols-2 gap-3" x-show="create_user == '1'">
                         <div>
-                            <label class="block text-3xs font-bold text-slate-500 uppercase tracking-wider">Email Login</label>
-                            <input type="email" name="user_email" :required="create_user == '1'" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="login@pemasok.com">
+                            <label class="block text-3xs font-semibold text-slate-500">Email Login</label>
+                            <input type="email" name="user_email" :required="create_user == '1'" class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="login@pemasok.com">
                         </div>
                         <div>
-                            <label class="block text-3xs font-bold text-slate-500 uppercase tracking-wider">Kata Sandi</label>
-                            <input type="password" name="user_password" :required="create_user == '1'" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="••••••">
+                            <label class="block text-3xs font-semibold text-slate-500">Kata Sandi</label>
+                            <input type="password" name="user_password" :required="create_user == '1'" class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="••••••">
                         </div>
                     </div>
 
                     <!-- Div Hubungkan Akun Terdaftar -->
-                    <div class="mt-3" x-show="create_user == '0'" style="display: none;">
-                        <label class="block text-3xs font-bold text-slate-500 uppercase tracking-wider">Pilih Akun Pemasok</label>
-                        <select name="user_id" :required="create_user == '0'" class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none">
+                    <div class="mt-2" x-show="create_user == '0'" style="display: none;">
+                        <label class="block text-3xs font-semibold text-slate-500">Pilih Akun Pemasok</label>
+                        <select name="user_id" :required="create_user == '0'" class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none">
                             <option value="">-- Pilih Akun --</option>
                             @foreach($pemasokUsers as $usr)
                                 <option value="{{ $usr->id }}">{{ $usr->name }} ({{ $usr->email }})</option>
@@ -195,9 +195,9 @@
                     </div>
                 </div>
 
-                <div class="pt-4 flex justify-end gap-2 border-t border-slate-50">
-                    <button type="button" @click="openAddModal = false" class="px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition">Batal</button>
-                    <button type="submit" class="px-6 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-sm font-semibold text-white shadow-md transition">Simpan</button>
+                <div class="pt-3 flex justify-end gap-2 border-t border-slate-50">
+                    <button type="button" @click="openAddModal = false" class="px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition">Batal</button>
+                    <button type="submit" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-xs font-semibold text-white shadow-md transition">Simpan</button>
                 </div>
             </form>
         </div>
@@ -211,11 +211,11 @@
                 <button @click="openLinkModal = false" class="text-slate-400 hover:text-slate-600 text-lg">&times;</button>
             </div>
 
-            <form :action="`{{ url('pemilik/pemasok') }}/${activeSupplierId}/link`" method="POST" class="p-6 space-y-4">
+            <form :action="`{{ url('pemilik/pemasok') }}/${activeSupplierId}/link`" method="POST" class="p-5 space-y-3">
                 @csrf
                 <div>
-                    <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Pilih Bahan Baku</label>
-                    <select name="raw_material_id" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
+                    <label class="block text-3xs font-semibold text-slate-500">Pilih Bahan Baku</label>
+                    <select name="raw_material_id" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none">
                         <option value="">-- Pilih Bahan Baku --</option>
                         @foreach($materials as $mat)
                             <option value="{{ $mat->id }}">{{ $mat->name }} ({{ $mat->code }})</option>
@@ -223,31 +223,31 @@
                     </select>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Harga Jual Pemasok (Rp)</label>
-                        <input type="number" name="price_per_unit" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="95000">
+                        <label class="block text-3xs font-semibold text-slate-500">Harga Jual Pemasok (Rp)</label>
+                        <input type="number" name="price_per_unit" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="95000">
                     </div>
                     <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Min. Order Qty</label>
-                        <input type="number" step="0.01" name="minimum_order_qty" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="5">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Stok di Pemasok</label>
-                        <input type="number" step="0.01" name="available_stock" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="100">
-                    </div>
-                    <div>
-                        <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Lead Time (Hari)</label>
-                        <input type="number" name="lead_time_days" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="1">
+                        <label class="block text-3xs font-semibold text-slate-500">Min. Order Qty</label>
+                        <input type="number" step="0.01" name="minimum_order_qty" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="5">
                     </div>
                 </div>
 
-                <div class="pt-4 flex justify-end gap-2 border-t border-slate-50">
-                    <button type="button" @click="openLinkModal = false" class="px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition">Batal</button>
-                    <button type="submit" class="px-6 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-sm font-semibold text-white shadow-md transition">Simpan Kaitan</button>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-3xs font-semibold text-slate-500">Stok di Pemasok</label>
+                        <input type="number" step="0.01" name="available_stock" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="100">
+                    </div>
+                    <div>
+                        <label class="block text-3xs font-semibold text-slate-500">Lead Time (Hari)</label>
+                        <input type="number" name="lead_time_days" required class="mt-0.5 block w-full rounded-xl border border-slate-200 px-3 py-1.5 text-xs focus:border-amber-500 focus:outline-none" placeholder="1">
+                    </div>
+                </div>
+
+                <div class="pt-3 flex justify-end gap-2 border-t border-slate-50">
+                    <button type="button" @click="openLinkModal = false" class="px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-semibold text-slate-600 hover:bg-slate-50 transition">Batal</button>
+                    <button type="submit" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-xs font-semibold text-white shadow-md transition">Simpan Kaitan</button>
                 </div>
             </form>
         </div>

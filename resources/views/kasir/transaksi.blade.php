@@ -88,7 +88,7 @@
 
                     <div class="space-y-4 border-t border-slate-50 pt-4">
                         <div>
-                            <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Metode Pembayaran</label>
+                            <label class="block text-3xs font-semibold text-slate-500">Metode Pembayaran</label>
                             <select name="payment_method" required class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none">
                                 <option value="cash">Tunai (Cash)</option>
                                 <option value="qris">QRIS</option>
@@ -97,7 +97,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-2xs font-bold text-slate-500 uppercase tracking-wider">Diskon Tambahan (Rp)</label>
+                            <label class="block text-3xs font-semibold text-slate-500">Diskon Tambahan (Rp)</label>
                             <input type="number" name="discount" x-model.number="discount" min="0" @input="calculateTotals()"
                                    class="mt-1 block w-full rounded-xl border border-slate-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" placeholder="0">
                         </div>

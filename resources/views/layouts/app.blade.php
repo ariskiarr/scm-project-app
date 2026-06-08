@@ -48,6 +48,7 @@
                             <a href="{{ route('pemilik.dashboard') }}" class="text-sm font-medium {{ request()->routeIs('pemilik.dashboard') ? 'text-amber-600' : 'text-slate-600 hover:text-slate-900' }}">Dashboard</a>
                             <a href="{{ route('pemilik.bahan-baku') }}" class="text-sm font-medium {{ request()->routeIs('pemilik.bahan-baku') ? 'text-amber-600' : 'text-slate-600 hover:text-slate-900' }}">Bahan Baku</a>
                             <a href="{{ route('pemilik.pemasok') }}" class="text-sm font-medium {{ request()->routeIs('pemilik.pemasok') ? 'text-amber-600' : 'text-slate-600 hover:text-slate-900' }}">Pemasok</a>
+                            <a href="{{ route('pemilik.produk') }}" class="text-sm font-medium {{ request()->routeIs('pemilik.produk') ? 'text-amber-600' : 'text-slate-600 hover:text-slate-900' }}">Produk</a>
                             <a href="{{ route('pemilik.purchase-orders') }}" class="text-sm font-medium {{ request()->routeIs('pemilik.purchase-orders') ? 'text-amber-600' : 'text-slate-600 hover:text-slate-900' }}">Purchase Order</a>
                             <a href="{{ route('pemilik.laporan') }}" class="text-sm font-medium {{ request()->routeIs('pemilik.laporan') ? 'text-amber-600' : 'text-slate-600 hover:text-slate-900' }}">Laporan</a>
                             <a href="{{ route('pemilik.akun') }}" class="text-sm font-medium {{ request()->routeIs('pemilik.akun') ? 'text-amber-600' : 'text-slate-600 hover:text-slate-900' }}">User Akun</a>
@@ -153,6 +154,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
                 <span>Stok</span>
             </a>
+            <a href="{{ route('pemilik.produk') }}" class="flex flex-col items-center text-[10px] {{ request()->routeIs('pemilik.produk') ? 'text-amber-600 font-semibold' : 'text-slate-400' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                <span>Produk</span>
+            </a>
             <a href="{{ route('pemilik.purchase-orders') }}" class="flex flex-col items-center text-[10px] {{ request()->routeIs('pemilik.purchase-orders') ? 'text-amber-600 font-semibold' : 'text-slate-400' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
                 <span>PO</span>
@@ -247,3 +252,4 @@
     @yield('scripts')
 </body>
 </html>
+

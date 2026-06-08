@@ -12,6 +12,7 @@ use App\Models\DailySalesSummary;
 use App\Models\StockMutation;
 use App\Models\User;
 use App\Models\Notification;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -424,6 +425,76 @@ class PemilikController extends Controller
         $totalOffline = $summaries->sum('total_orders_offline');
 
         return view('pemilik.laporan', compact('summaries', 'totalRevenue', 'totalTransactions', 'totalOnline', 'totalOffline', 'startDate', 'endDate'));
+    }
+
+    // --- MANAJEMEN PRODUK (CRUD) ---
+    public function produk()
+    {
+        $products = Product::latest()->get();
+        return view('pemilik.produk', compact('products'));
+    }
+
+    public function storeProduk(Request $request)
+    {
+        $request->validate([
+            'code' => ['required', 'string', 'unique:products,code'],
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'category' => ['nullable', 'string', 'max:100'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'stock' => ['required', 'numeric', 'min:0'],
+            'unit' => ['required', 'string', 'max:20'],
+            'is_available' => ['boolean'],
+        ]);
+
+        Product::create([
+            'code' => $request->code,
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
+            'price' => $request->price,
+            'stock' => $request->stock,
+            'unit' => $request->unit,
+            'is_available' => $request->boolean('is_available', true),
+        ]);
+
+        return redirect()->route('pemilik.produk')->with('success', 'Produk berhasil ditambahkan.');
+    }
+
+    public function updateProduk(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $request->validate([
+            'code' => ['required', 'string', 'max:255', \Illuminate\Validation\Rule::unique('products')->ignore($product->id)],
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'category' => ['nullable', 'string', 'max:100'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'stock' => ['required', 'numeric', 'min:0'],
+            'unit' => ['required', 'string', 'max:20'],
+            'is_available' => ['boolean'],
+        ]);
+
+        $product->update([
+            'code' => $request->code,
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
+            'price' => $request->price,
+            'stock' => $request->stock,
+            'unit' => $request->unit,
+            'is_available' => $request->boolean('is_available', true),
+        ]);
+
+        return redirect()->route('pemilik.produk')->with('success', 'Produk berhasil diperbarui.');
+    }
+
+    public function destroyProduk($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete(); // soft delete
+
+        return redirect()->route('pemilik.produk')->with('success', 'Produk berhasil dihapus.');
     }
 
     // --- MANAJEMEN AKUN ---
