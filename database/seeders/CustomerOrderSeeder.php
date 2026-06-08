@@ -98,7 +98,7 @@ class CustomerOrderSeeder extends Seeder
                 'customer_order_id' => $order->id,
                 'updated_by'        => $kurir->id,
                 'status'            => 'ready_to_ship',
-                'location'          => 'Gerai Kebab Berkah',
+                'location'          => 'Gerai Kebab Time',
                 'description'       => 'Pesanan siap untuk diambil kurir',
             ]);
         }

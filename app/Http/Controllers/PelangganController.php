@@ -125,7 +125,7 @@ class PelangganController extends Controller
                 'customer_order_id' => $order->id,
                 'updated_by' => auth()->id(),
                 'status' => OrderDeliveryUpdate::STATUS_PENDING,
-                'location' => 'Sistem Kebab Berkah',
+                'location' => 'Sistem Kebab Time',
                 'description' => 'Pesanan berhasil dibuat oleh pelanggan. Menunggu konfirmasi pembayaran dan dapur.',
             ]);
 

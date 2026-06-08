@@ -1,6 +1,6 @@
 <!--
 ====================================================================
-Professional SVG Icon Components for Kebab Berkah SCM Portal
+Professional SVG Icon Components for Kebab Time SCM Portal
 ====================================================================
 Usage: @include('components.icons', ['icon' => 'dashboard', 'class' => 'h-5 w-5'])
        Or use the individual includes below.

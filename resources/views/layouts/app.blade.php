@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Kebab Berkah') - UMKM Kebab SCM</title>
+    <title>@yield('title', 'Kebab Time') - UMKM Kebab SCM</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="font-bold text-lg text-slate-800 tracking-tight block">Kebab Berkah</span>
+                        <span class="font-bold text-lg text-slate-800 tracking-tight block">Kebab Time</span>
                         <span class="text-xs text-amber-600 font-semibold uppercase tracking-wider -mt-1 block">SCM Portal</span>
                     </div>
                 </div>
@@ -244,7 +244,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-100 py-6 text-center text-xs text-slate-400 mt-auto hidden md:block">
-        <p>&copy; 2026 Kebab Berkah. All rights reserved.</p>
+        <p>&copy; 2026 Kebab Time. All rights reserved.</p>
     </footer>
 
     <!-- Alpine.js CDN for interactive dropdowns, modals, and tabs -->

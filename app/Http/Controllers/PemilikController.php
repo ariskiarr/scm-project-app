@@ -392,7 +392,7 @@ class PemilikController extends Controller
                     $supplier->user_id,
                     Notification::TYPE_NEW_ORDER,
                     'Purchase Order Baru: ' . $po->po_number,
-                    "Anda menerima purchase order baru dari Pemilik Kebab Berkah dengan total order Rp " . number_format($total, 0, ',', '.'),
+                    "Anda menerima purchase order baru dari Pemilik Kebab Time dengan total order Rp " . number_format($total, 0, ',', '.'),
                     $po
                 );
             }

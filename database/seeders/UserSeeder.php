@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         // ── Akun Tetap ─────────────────────────────────────────────
         User::create([
-            'name'      => 'Ahmad Kebab Berkah',
+            'name'      => 'Ahmad Kebab Time',
             'email'     => 'pemilik@kebab.com',
             'password'  => Hash::make('password'),
             'phone'     => '081234567890',

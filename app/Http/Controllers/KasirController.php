@@ -21,7 +21,7 @@ class KasirController extends Controller
         $todayOrders = CustomerOrder::today()->where('status', '!=', CustomerOrder::STATUS_CANCELLED)->get();
         $todayRevenue = $todayOrders->where('payment_status', CustomerOrder::PAYMENT_STATUS_PAID)->sum('total_amount');
         $pendingCount = CustomerOrder::pending()->count();
-        
+
         $activeOrders = CustomerOrder::with(['customer', 'kurir'])
             ->whereIn('status', [CustomerOrder::STATUS_PENDING, CustomerOrder::STATUS_CONFIRMED, CustomerOrder::STATUS_PROCESSING])
             ->latest()
@@ -50,7 +50,7 @@ class KasirController extends Controller
 
         $order = DB::transaction(function () use ($request) {
             $order_number = 'KB-' . now()->format('YmdHis') . '-' . rand(10, 99);
-            
+
             // Create walk-in customer user if not specified, or just link to a dummy/walk-in ID
             // We can just use the kasir user as customer, or find the default customer: pelanggan@kebab.com
             $defaultCustomer = User::where('role', 'pelanggan')->first();
@@ -74,7 +74,7 @@ class KasirController extends Controller
             $subtotal = 0;
             foreach ($request->items as $itemData) {
                 $product = Product::findOrFail($itemData['product_id']);
-                
+
                 // Decrement stock
                 if ($product->stock < $itemData['quantity']) {
                     throw new \Exception("Stok produk {$product->name} tidak mencukupi. Tersedia: {$product->stock}");
@@ -115,7 +115,7 @@ class KasirController extends Controller
             ->where('order_type', 'online')
             ->latest()
             ->get();
-            
+
         $couriers = User::where('role', 'kurir')->where('is_active', true)->get();
 
         return view('kasir.pesanan', compact('orders', 'couriers'));
@@ -155,7 +155,7 @@ class KasirController extends Controller
             $order->update($updateData);
 
             // Deduct stock when order is first confirmed/processed (if not deducted yet)
-            if (in_array($newStatus, [CustomerOrder::STATUS_CONFIRMED, CustomerOrder::STATUS_PROCESSING]) && 
+            if (in_array($newStatus, [CustomerOrder::STATUS_CONFIRMED, CustomerOrder::STATUS_PROCESSING]) &&
                 in_array($oldStatus, [CustomerOrder::STATUS_PENDING])) {
                 foreach ($order->items as $item) {
                     $product = Product::find($item->product_id);
@@ -167,12 +167,12 @@ class KasirController extends Controller
 
             // Create Delivery Update log
             $statusLabel = CustomerOrder::statusLabels()[$newStatus] ?? $newStatus;
-            
+
             OrderDeliveryUpdate::create([
                 'customer_order_id' => $order->id,
                 'updated_by' => auth()->id(),
                 'status' => $newStatus === CustomerOrder::STATUS_READY_TO_SHIP ? OrderDeliveryUpdate::STATUS_READY_TO_SHIP : $newStatus,
-                'location' => 'Dapur Kebab Berkah',
+                'location' => 'Dapur Kebab Time',
                 'description' => "Pesanan berstatus {$statusLabel}.",
             ]);
 
@@ -216,7 +216,7 @@ class KasirController extends Controller
     public function rekap()
     {
         $summaries = DailySalesSummary::orderBy('summary_date', 'desc')->get();
-        
+
         // Calculate current un-summarized numbers for today
         $todaySummary = DailySalesSummary::where('summary_date', today())->first();
 
