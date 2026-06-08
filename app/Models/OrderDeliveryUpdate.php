@@ -19,20 +19,28 @@ class OrderDeliveryUpdate extends Model
 
     // ─── Status Constants ─────────────────────────────────────────
 
-    const STATUS_READY_TO_SHIP  = 'ready_to_ship';
-    const STATUS_PICKED_UP      = 'picked_up';
-    const STATUS_IN_TRANSIT     = 'in_transit';
-    const STATUS_DELIVERED      = 'delivered';
+    const STATUS_PENDING         = 'pending';
+    const STATUS_CONFIRMED       = 'confirmed';
+    const STATUS_PROCESSING      = 'processing';
+    const STATUS_READY_TO_SHIP   = 'ready_to_ship';
+    const STATUS_PICKED_UP       = 'picked_up';
+    const STATUS_IN_TRANSIT      = 'in_transit';
+    const STATUS_DELIVERED       = 'delivered';
     const STATUS_FAILED_DELIVERY = 'failed_delivery';
+    const STATUS_CANCELLED       = 'cancelled';
 
     public static function statusLabels(): array
     {
         return [
+            self::STATUS_PENDING         => 'Menunggu Konfirmasi',
+            self::STATUS_CONFIRMED       => 'Dikonfirmasi',
+            self::STATUS_PROCESSING      => 'Diproses',
             self::STATUS_READY_TO_SHIP   => 'Siap Dikirim',
             self::STATUS_PICKED_UP       => 'Diambil Kurir',
             self::STATUS_IN_TRANSIT      => 'Dalam Perjalanan',
             self::STATUS_DELIVERED       => 'Terkirim',
             self::STATUS_FAILED_DELIVERY => 'Gagal Dikirim',
+            self::STATUS_CANCELLED       => 'Dibatalkan',
         ];
     }
 

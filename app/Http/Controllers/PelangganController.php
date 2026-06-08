@@ -17,7 +17,7 @@ class PelangganController extends Controller
     public function dashboard()
     {
         $products = Product::where('is_available', true)->where('stock', '>', 0)->get();
-        
+
         $activeOrders = CustomerOrder::with(['latestDeliveryUpdate'])
             ->where('customer_id', auth()->id())
             ->whereNotIn('status', [CustomerOrder::STATUS_DELIVERED, CustomerOrder::STATUS_CANCELLED])
@@ -37,11 +37,11 @@ class PelangganController extends Controller
 
         $checkoutItems = [];
         $subtotal = 0;
-        
+
         foreach ($request->items as $itemData) {
             $product = Product::findOrFail($itemData['product_id']);
             $qty = $itemData['quantity'];
-            
+
             if ($product->stock < $qty) {
                 return redirect()->route('pelanggan.dashboard')->withErrors([
                     'error' => "Stok produk {$product->name} tidak mencukupi."
@@ -97,7 +97,7 @@ class PelangganController extends Controller
             $subtotal = 0;
             foreach ($request->items as $itemData) {
                 $product = Product::findOrFail($itemData['product_id']);
-                
+
                 if ($product->stock < $itemData['quantity']) {
                     throw new \Exception("Stok produk {$product->name} tidak mencukupi.");
                 }
@@ -124,7 +124,7 @@ class PelangganController extends Controller
             OrderDeliveryUpdate::create([
                 'customer_order_id' => $order->id,
                 'updated_by' => auth()->id(),
-                'status' => CustomerOrder::STATUS_PENDING,
+                'status' => OrderDeliveryUpdate::STATUS_PENDING,
                 'location' => 'Sistem Kebab Berkah',
                 'description' => 'Pesanan berhasil dibuat oleh pelanggan. Menunggu konfirmasi pembayaran dan dapur.',
             ]);
@@ -150,7 +150,7 @@ class PelangganController extends Controller
     public function tracking($id)
     {
         $order = CustomerOrder::with(['items', 'deliveryUpdates.updatedBy', 'kurir'])->findOrFail($id);
-        
+
         if ($order->customer_id !== auth()->id()) {
             abort(403);
         }

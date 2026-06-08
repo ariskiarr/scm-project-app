@@ -23,6 +23,7 @@
                     @elseif($order->status === 'ready_to_ship') bg-indigo-50 text-indigo-700
                     @elseif($order->status === 'shipped') bg-purple-50 text-purple-700
                     @elseif($order->status === 'delivered') bg-emerald-50 text-emerald-700
+                    @elseif($order->status === 'cancelled') bg-red-50 text-red-700
                     @else bg-slate-100 text-slate-700 @endif">
                     {{ $order->status_label }}
                 </span>
@@ -78,11 +79,15 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <span class="inline-flex items-center rounded-full px-2 py-0.5 text-2xs font-bold uppercase tracking-wider
-                                @if($update->status === 'processing') bg-amber-100 text-amber-800
+                                @if($update->status === 'pending') bg-red-100 text-red-800
+                                @elseif($update->status === 'confirmed') bg-blue-100 text-blue-800
+                                @elseif($update->status === 'processing') bg-amber-100 text-amber-800
+                                @elseif($update->status === 'ready_to_ship') bg-indigo-100 text-indigo-800
                                 @elseif($update->status === 'picked_up') bg-indigo-100 text-indigo-800
                                 @elseif($update->status === 'in_transit') bg-blue-100 text-blue-800
                                 @elseif($update->status === 'delivered') bg-emerald-100 text-emerald-800
-                                @else bg-red-100 text-red-800 @endif">
+                                @elseif($update->status === 'cancelled') bg-red-100 text-red-800
+                                @else bg-slate-100 text-slate-800 @endif">
                                 {{ $update->status_label }}
                             </span>
                             <span class="font-bold text-sm text-slate-800 block mt-1">{{ $update->description }}</span>

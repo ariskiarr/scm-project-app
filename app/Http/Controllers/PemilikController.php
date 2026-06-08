@@ -26,7 +26,7 @@ class PemilikController extends Controller
         // 1. Stock Summary
         $materials = RawMaterial::all();
         $lowStockMaterials = RawMaterial::lowStock()->get();
-        
+
         // Auto-generate low-stock notifications
         foreach ($lowStockMaterials as $mat) {
             $existingNotif = Notification::where('user_id', $user->id)
@@ -34,7 +34,7 @@ class PemilikController extends Controller
                 ->where('reference_id', $mat->id)
                 ->where('created_at', '>=', now()->subDay())
                 ->first();
-                
+
             if (!$existingNotif) {
                 Notification::send(
                     $user->id,
@@ -126,7 +126,7 @@ class PemilikController extends Controller
         $pemasokUsers = User::where('role', 'pemasok')
             ->whereDoesntHave('supplier')
             ->get();
-            
+
         return view('pemilik.pemasok', compact('suppliers', 'materials', 'pemasokUsers'));
     }
 
@@ -235,7 +235,7 @@ class PemilikController extends Controller
     {
         $purchaseOrders = PurchaseOrder::with(['supplier', 'creator', 'items.rawMaterial', 'latestDeliveryUpdate'])->latest()->get();
         $suppliers = Supplier::where('is_active', true)->get();
-        
+
         return view('pemilik.purchase-orders', compact('purchaseOrders', 'suppliers'));
     }
 
@@ -243,7 +243,7 @@ class PemilikController extends Controller
     {
         $supplierId = $request->supplier_id;
         $supplier = Supplier::with('activeRawMaterials')->findOrFail($supplierId);
-        
+
         return view('pemilik.purchase-orders-create', compact('supplier'));
     }
 
@@ -261,12 +261,12 @@ class PemilikController extends Controller
 
         DB::transaction(function () use ($request) {
             $po_number = 'PO-' . now()->format('YmdHis') . '-' . rand(10, 99);
-            
+
             $po = PurchaseOrder::create([
                 'po_number' => $po_number,
                 'supplier_id' => $request->supplier_id,
                 'created_by' => auth()->id(),
-                'status' => PurchaseOrder::STATUS_SENT, // Automatically sent
+                'status' => PurchaseOrder::STATUS_SENT,
                 'total_amount' => 0,
                 'expected_delivery_date' => $request->expected_delivery_date,
                 'notes' => $request->notes,
@@ -276,7 +276,7 @@ class PemilikController extends Controller
             foreach ($request->items as $itemData) {
                 $subtotal = $itemData['quantity'] * $itemData['price_per_unit'];
                 $total += $subtotal;
-                
+
                 $material = RawMaterial::find($itemData['raw_material_id']);
 
                 PurchaseOrderItem::create([
@@ -299,7 +299,7 @@ class PemilikController extends Controller
                 'status' => PurchaseOrderDeliveryUpdate::STATUS_PREPARING,
                 'description' => 'Purchase order dibuat dan dikirim ke pemasok.',
             ]);
-            
+
             // Notify supplier
             $supplier = Supplier::find($request->supplier_id);
             if ($supplier->user_id) {
@@ -325,7 +325,7 @@ class PemilikController extends Controller
 
         DB::transaction(function () use ($po) {
             $po->update(['status' => PurchaseOrder::STATUS_CANCELLED]);
-            
+
             PurchaseOrderDeliveryUpdate::create([
                 'purchase_order_id' => $po->id,
                 'updated_by' => auth()->id(),
@@ -364,7 +364,7 @@ class PemilikController extends Controller
             foreach ($po->items as $item) {
                 $material = RawMaterial::find($item->raw_material_id);
                 $stockBefore = $material->current_stock;
-                
+
                 // Increase stock
                 $material->current_stock += $item->quantity;
                 $material->save();
@@ -429,7 +429,7 @@ class PemilikController extends Controller
     // --- MANAJEMEN AKUN ---
     public function akun()
     {
-        $users = User::orderBy('name')->get();
+        $users = User::where('role', '!=', 'pelanggan')->orderBy('name')->get();
         return view('pemilik.akun', compact('users'));
     }
 

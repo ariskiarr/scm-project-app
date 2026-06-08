@@ -7,7 +7,7 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
             <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Manajemen Akun Pengguna</h1>
-            <p class="text-slate-500 text-sm mt-1">Kelola hak akses pengguna sistem (Pemilik, Kasir, Kurir, Pemasok, Pelanggan).</p>
+            <p class="text-slate-500 text-sm mt-1">Kelola hak akses pengguna sistem (Pemilik, Kasir, Kurir, Pemasok).</p>
         </div>
         <button @click="openAddModal = true" class="rounded-xl bg-gradient-to-r from-amber-500 to-red-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg> Tambah Pengguna Baru
@@ -110,7 +110,6 @@
                             <option value="kasir">Kasir</option>
                             <option value="kurir">Kurir</option>
                             <option value="pemasok">Pemasok</option>
-                            <option value="pelanggan">Pelanggan</option>
                         </select>
                     </div>
                 </div>
@@ -167,7 +166,6 @@
                             <option value="kasir" :selected="activeUser.role === 'kasir'">Kasir</option>
                             <option value="kurir" :selected="activeUser.role === 'kurir'">Kurir</option>
                             <option value="pemasok" :selected="activeUser.role === 'pemasok'">Pemasok</option>
-                            <option value="pelanggan" :selected="activeUser.role === 'pelanggan'">Pelanggan</option>
                         </select>
                     </div>
                 </div>

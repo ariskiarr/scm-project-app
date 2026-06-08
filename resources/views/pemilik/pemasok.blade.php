@@ -9,7 +9,7 @@
             <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Manajemen Pemasok</h1>
             <p class="text-slate-500 text-sm mt-1">Kelola data pemasok bahan baku, harga kontrak, dan batas minimum pemesanan.</p>
         </div>
-        <button @click="openAddModal = true" class="rounded-xl bg-gradient-to-r from-amber-500 to-red-500 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 hover:from-amber-600 hover:to-red-600 transition flex items-center gap-1.5">
+        <button @click="openAddModal = true" class="rounded-xl bg-amber-500 hover:bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-md shadow-amber-500/10 transition flex items-center gap-1.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
             Tambah Pemasok Baru
         </button>
@@ -197,7 +197,7 @@
 
                 <div class="pt-4 flex justify-end gap-2 border-t border-slate-50">
                     <button type="button" @click="openAddModal = false" class="px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition">Batal</button>
-                    <button type="submit" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-red-500 text-sm font-semibold text-white shadow-md hover:from-amber-600 hover:to-red-600 transition">Simpan</button>
+                    <button type="submit" class="px-6 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-sm font-semibold text-white shadow-md transition">Simpan</button>
                 </div>
             </form>
         </div>
@@ -247,7 +247,7 @@
 
                 <div class="pt-4 flex justify-end gap-2 border-t border-slate-50">
                     <button type="button" @click="openLinkModal = false" class="px-4 py-2 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition">Batal</button>
-                    <button type="submit" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-red-500 text-sm font-semibold text-white shadow-md hover:from-amber-600 hover:to-red-600 transition">Simpan Kaitan</button>
+                    <button type="submit" class="px-6 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-sm font-semibold text-white shadow-md transition">Simpan Kaitan</button>
                 </div>
             </form>
         </div>

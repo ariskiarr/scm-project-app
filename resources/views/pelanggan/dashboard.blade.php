@@ -5,7 +5,7 @@
 @section('content')
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8" x-data="customerCatalog()">
     <!-- Active Orders Tracking Alert -->
-    @if($activeOrders->count() > 0)
+    {{-- @if($activeOrders->count() > 0)
         <div class="mb-8 bg-amber-50 border border-amber-100 rounded-3xl p-5 shadow-sm">
             <span class="block text-xs font-bold text-amber-800 uppercase tracking-wider mb-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 inline -mt-0.5 mr-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2-1m0 0l2 1m-2-1v2a1 1 0 001 1h14a1 1 0 001-1v-2m0 0l2 1m-2-1l-2 1"/></svg> Pelacakan Pesanan Aktif Anda</span>
             <div class="space-y-3">
@@ -23,7 +23,7 @@
                 @endforeach
             </div>
         </div>
-    @endif
+    @endif --}}
 
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
         <div>
@@ -55,9 +55,9 @@
                                 <p class="text-slate-400 text-3xs mt-1 truncate" x-text="prod.description || 'Kebab gurih nan lezat.'"></p>
                                 <span class="text-xs text-amber-600 font-bold block mt-2" x-text="formatRupiah(prod.price)"></span>
                             </div>
-                            <div class="mt-3 flex justify-between items-center">
+                            <div class="mt-2 flex justify-between items-center">
                                 <span class="text-3xs text-slate-400 font-medium" x-text="`Tersedia: ${parseInt(prod.stock)} pcs`"></span>
-                                <span class="bg-amber-500 text-white rounded-lg p-1 text-2xs hover:bg-amber-600 transition">+ Keranjang</span>
+                                {{-- <span class="bg-amber-500 text-white rounded-md px-1.5 py-0.5 text-3xs hover:bg-amber-600 transition font-medium"> Tambah</span> --}}
                             </div>
                         </div>
                     </template>
