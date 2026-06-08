@@ -1,47 +1,48 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+/* IMPORTANT: include project files */
+@source "../views/**/*.blade.php";
+@source "../js/**/*.js";
+
+/* Optional: Laravel vendor */
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
 
 @theme {
-    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Custom text sizes for better control */
+/* Custom styles */
 .text-xxs {
-    font-size: 0.65rem;
-    line-height: 0.9rem;
+  font-size: 0.65rem;
+  line-height: 0.9rem;
 }
 
 .text-3xs {
-    font-size: 0.6rem;
-    line-height: 0.85rem;
+  font-size: 0.6rem;
+  line-height: 0.85rem;
 }
 
-/* Improve status badge sizing */
 .status-badge {
-    font-size: 0.6rem;
-    line-height: 1rem;
-    padding: 0.125rem 0.5rem;
-    border-radius: 9999px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
+  font-size: 0.6rem;
+  line-height: 1rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-/* Better stat card number sizing */
 .stat-value {
-    font-size: 1.5rem;
-    line-height: 2rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 @media (min-width: 768px) {
-    .stat-value {
-        font-size: 1.875rem;
-        line-height: 2.25rem;
-    }
+  .stat-value {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
 }
