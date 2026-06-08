@@ -1,0 +1,23 @@
+# Task Progress
+
+- [x] Analyze all view files and identify issues
+- [x] Fix login.blade.php (emoji → SVG, font sizes)
+- [x] Fix register.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemilik/dashboard.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemilik/bahan-baku.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemilik/purchase-orders.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemilik/pemasok.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemilik/laporan.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemilik/akun.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemilik/purchase-orders-create.blade.php (font sizes)
+- [ ] Fix kasir/dashboard.blade.php (emoji → SVG, font sizes)
+- [ ] Fix kasir/transaksi.blade.php (emoji → SVG, font sizes)
+- [ ] Fix kasir/pesanan.blade.php (emoji → SVG, font sizes)
+- [ ] Fix kasir/rekap.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pelanggan/dashboard.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pelanggan/tracking.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pelanggan/riwayat.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pelanggan/checkout.blade.php (font sizes)
+- [ ] Fix kurir/dashboard.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemasok/dashboard.blade.php (emoji → SVG, font sizes)
+- [ ] Fix pemasok/stok.blade.php (font sizes)
